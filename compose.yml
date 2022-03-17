@@ -1,0 +1,19 @@
+services:
+  npm: &npm
+    env_file: .env
+    build:
+      context: .
+    entrypoint: npm
+    command: help
+    volumes:
+      - .:/usr/src/app:delegated
+      - node:/node_modules:delegated
+
+  app:
+    <<: *npm
+    command: start
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+
+volumes:
+  node: {}

@@ -1,11 +1,13 @@
 import { ApolloServer } from "apollo-server";
-import { ApolloGateway } from "@apollo/gateway";
+import { ApolloGateway, IntrospectAndCompose } from "@apollo/gateway";
 
 const gateway = new ApolloGateway({
-  serviceList: [
-    { name: "technologies", url: `${process.env.TECH_SERVER_URL}/query` },
-    { name: "skills", url: `${process.env.SKILL_SERVER_URL}/query` }
-  ],
+  supergraphSdl: new IntrospectAndCompose({
+    subgraphs: [
+      { name: "technologies", url: process.env.TECH_SERVER_URL },
+      { name: "skills", url: process.env.SKILL_SERVER_URL }
+    ],
+  }),
 });
 
 const server = new ApolloServer({
@@ -13,6 +15,6 @@ const server = new ApolloServer({
   subscriptions: false,
 });
 
-server.listen().then(({ url }) => {
+server.listen({ port: process.env.SERVER_PORT }).then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`);
 });

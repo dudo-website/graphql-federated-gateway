@@ -5,7 +5,8 @@ const gateway = new ApolloGateway({
   supergraphSdl: new IntrospectAndCompose({
     subgraphs: [
       { name: "technologies", url: process.env.TECH_SERVER_URL },
-      { name: "skills", url: process.env.SKILL_SERVER_URL }
+      { name: "skills", url: process.env.SKILL_SERVER_URL },
+      { name: "events", url: process.env.EVENT_SERVER_URL }
     ],
   }),
 });

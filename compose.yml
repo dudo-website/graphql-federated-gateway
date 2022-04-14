@@ -13,7 +13,7 @@ services:
     <<: *npm
     command: start
     ports:
-      - ${SERVER_PORT}:${SERVER_PORT}
+      - ${PORT}:${PORT}
 
 volumes:
   node: {}

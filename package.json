@@ -8,9 +8,9 @@
     "start": "node ./src/index.js"
   },
   "dependencies": {
-    "@apollo/gateway": "^2.0.0-preview.7",
+    "@apollo/gateway": "^2.0.2",
     "apollo-server": "^3.6.4",
-    "graphql": "^16.0.0"
+    "graphql": "^16.4.0"
   },
   "devDependencies": {
     "eslint": "^8.11.0"
